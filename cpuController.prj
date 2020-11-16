@@ -1,0 +1,4 @@
+verilog work "programCounter.v"
+verilog work "instructionRegister.v"
+verilog work "cpuControlLogic.v"
+verilog work "cpuController.v"

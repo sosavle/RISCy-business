@@ -1,0 +1,2 @@
+ISim log file
+Running: C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\tb_CPU_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/tb_CPU_isim_beh.wdb 

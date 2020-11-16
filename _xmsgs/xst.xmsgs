@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 61: Result of <arg fmt="%d" index="1">17</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">16</arg>-bit target.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="413" delta="old" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 66: Result of <arg fmt="%d" index="1">18</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">16</arg>-bit target.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 65: Assignment to <arg fmt="%s" index="1">MW</arg> ignored, since the identifier is never used
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="189" delta="new" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 81: Size mismatch in connection of port &lt;<arg fmt="%s" index="3">PC</arg>&gt;. Formal port size is <arg fmt="%d" index="2">4</arg>-bit while actual signal size is <arg fmt="%d" index="1">16</arg>-bit.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 82: Assignment to <arg fmt="%s" index="1">Dout</arg> ignored, since the identifier is never used
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 83: Assignment to <arg fmt="%s" index="1">MemAddr</arg> ignored, since the identifier is never used
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 42: Net &lt;<arg fmt="%s" index="1">IR[15]</arg>&gt; does not have a driver.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 47: Net &lt;<arg fmt="%s" index="1">D[15]</arg>&gt; does not have a driver.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="634" delta="new" >"C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 49: Net &lt;<arg fmt="%s" index="1">MemIn[5]</arg>&gt; does not have a driver.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v</arg>&quot; line <arg fmt="%d" index="2">52</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">controller</arg>&gt; of block &lt;<arg fmt="%s" index="4">cpuController</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CPU</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v</arg>&quot; line <arg fmt="%d" index="2">69</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">datapath</arg>&gt; of block &lt;<arg fmt="%s" index="4">cpuDatapath</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">CPU</arg>&gt;. Underlying logic will be removed.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">data_from_rom</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v</arg>&quot; line <arg fmt="%s" index="2">52</arg>: Output port &lt;<arg fmt="%s" index="3">MW</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">controller</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v</arg>&quot; line <arg fmt="%s" index="2">69</arg>: Output port &lt;<arg fmt="%s" index="3">Dout</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">datapath</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v</arg>&quot; line <arg fmt="%s" index="2">69</arg>: Output port &lt;<arg fmt="%s" index="3">MemAddr</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">datapath</arg>&gt; is unconnected or connected to loadless signal.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">IR</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">D</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">MemIn</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">GND</arg>.
+</msg>
+
+</messages>
+
