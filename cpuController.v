@@ -30,10 +30,12 @@ module cpuController(
 	 output [addressWidth-1:0] BA,
 	 output [fsWidth-1:0] FS,
 	 output MB,
-	 output MD,
+	 output [resultSourceWidth-1:0] resultSource,
 	 output RW,
 	 output MW,
-	 output BL
+	 output IL,
+	 output EOE
+
     );
 	 
 	localparam busSize = 16;
@@ -41,6 +43,7 @@ module cpuController(
 	localparam opcodeWidth = 4;
 	localparam fsWidth = 3;
 	localparam psWidth = 2;
+	localparam resultSourceWidth = 2;
 	
 	reg controlState;
 	wire [opcodeWidth-1:0] opcode;
@@ -66,12 +69,12 @@ module cpuController(
 		 .FS(FS),
 		 .PS(PS),
 		 .MB(MB),
-		 .MD(MD),
+		 .resultSource(resultSource),
 		 .RW(RW),
 		 .MW(MW),
 		 .BC(BC),
-		 .BL(BL),
-		 .IL(IL)
+		 .IL(IL),
+		 .EOE(EOE)
     );
 	
 	programCounter progCount(

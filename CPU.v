@@ -19,51 +19,55 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
  
-module CPU( //represent the CPU
-	input [15:0] data_from_rom,
+module CPU( 
+	input [15:0] data_from_rom, // Instruction data that should be fed to IR
 	input reset,
 	input clk,
-	inout [15:1] data_ram,
+	inout [15:1] data_ram, // Data available for MEM operations
 	output [5:0] address_to_rom,
-	output enable_to_rom,
+	output enable_to_rom, 
 	output write_enable_to_ram, //enable write
 	output [5:0] address_to_ram,
 	output read_enable_to_ram,
-	output enable_ram_read //enable signal for ram read and UART module. This signal indicates that all
-	//operations of the 'CPU' are finished.
-);
-	assign enable_ram_read = 1;
+	output enable_ram_read, //enable signal for ram read and UART module. This signal indicates that all
 	
+	// DEBUG OUTPUT!!
+	output [busSize-1:0] D
+	//operations of the 'CPU' are finished.
+);
 	localparam memInWidth = 6;
 	localparam busSize = 16;
 	localparam addressWidth = 4;
 	localparam fsWidth = 3;
+	localparam resultSourceWidth = 2;
 	
 	wire [busSize-1:0] IR;
-	wire [busSize-1:0] PC;
 	wire [addressWidth-1:0] DA;
 	wire [addressWidth-1:0] AA;
 	wire [addressWidth-1:0] BA;
-	wire [busSize-1:0] D;
+	//wire [busSize-1:0] D;
 	wire [fsWidth-1:0] FS;
 	wire [memInWidth-1:0] MemIn;
-	wire [busSize-1:0] Dout;
+	wire [resultSourceWidth-1:0] resultSource;
+	
+	assign read_enable_to_ram = resultSource[1];
 	
 	cpuController controller(
 		.clk(clk),
 		.reset(reset),
 		.D(D),
-		.IR(IR),
-		.PC(PC),
+		.IR(data_from_rom),
+		.PC(address_to_rom),
 		.DA(DA),
 		.AA(AA),
 		.BA(BA),
 		.FS(FS),
 		.MB(MB),
-		.MD(MD),
+		.resultSource(resultSource),
 		.RW(RW),
-		.MW(MW),
-		.BL(BL)
+		.MW(write_enable_to_ram),
+		.IL(enable_to_rom),
+		.EOE(enable_ram_read)
 	);
 	
 	cpuDatapath datapath(
@@ -74,13 +78,12 @@ module CPU( //represent the CPU
 		.BA(BA),
 		.FS(FS),
 		.MB(MB),
-		.MD(MD), 
-		.BL(BL),
+		.resultSource(resultSource),
 		.RW(RW),
-		.MemIn(MemIn),
+		.MemIn(data_ram),
 		.PC(PC),
-		.Dout(Dout),
-		.MemAddr(MemAddr) 
+		.Dout(D),
+		.MemAddr(address_to_ram) 
 	);
 
 endmodule

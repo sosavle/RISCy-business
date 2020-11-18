@@ -52,14 +52,18 @@ module tb_instructionRegister;
 		// Initialize Inputs
 		clk = 0;
 		reset = 1;
-		IL = 0;
+		IL = 1;
 		IR = 0;
 		#10;
 		reset = 0;
 		IR = 16'h8006;
+		#20;
+		IR = 16'h1234;
+		
 
 	end
 		always #10 clk = ~clk;
+		always #30 IL = ~IL;
       
 endmodule
 

@@ -30,7 +30,8 @@ module cpuControlLogic(
 	 output reg RW,  // Read/Write from/to register file
 	 output reg MW,  // Write value from register file into memory
 	 output reg BC,  // Branch condition
-	 output reg IL   // Instruction Load
+	 output reg IL,   // Instruction Load
+	 output reg EOE // End of Execution
     );
 	 
 	 localparam opcodeWidth = 4;
@@ -51,9 +52,10 @@ module cpuControlLogic(
 	 localparam BC_NZERO = 1;
 	 
 	 localparam SOURCE_F = 0;
-	 localparam SOURCE_ROM = 1;
+	 localparam SOURCE_PC = 1;
 	 localparam SOURCE_RAM = 2;
-	 localparam SOURCE_PC = 3;
+	 localparam SOURCE_IMMEDIATE = 3;
+	 
 		
 	 // Arithmetic
 	 localparam ADD = 0;
@@ -78,29 +80,41 @@ module cpuControlLogic(
 	 
 	reg S;  // State
 	reg NS; // Next State
+	reg firstInstruction;
 	 
 	// Control State Register
 	always@(posedge clk) begin
 		if(reset == 1) begin
-			S <= 0;
+			firstInstruction = 1;
+			S = S_EXECUTE;
 		end else begin
-			S <= NS;
+			firstInstruction = 0;
+			S = NS;
 		end
 	end 
 
-	always@(S, opcode, Rd) begin
+	always@(S) begin
+		if(firstInstruction) begin
+			NS <= S_FETCH;
+			IL <= 0;
+		end else begin
+			NS <= ~S;
+			IL <= ~S;
+		end
+	end
 	
+	always@(S, opcode, Rd) begin
 		// Default assingments, only differing ones specified in if-else
-		PS <= S; 
+		PS <= {0,~S}; 
 		FS <= 0; 
 		MB <= 0; 
 		resultSource <= SOURCE_F; 
 		RW <= S; 
 		MW <= 0;
-		NS <= ~S;
 		BC <= 0;
-		IL <= ~S;
-	
+		EOE <= 0;
+
+
 		// Arithmetic
 		if(opcode <= SRA) begin
 			FS <= opcode[fsWidth-1:0];
@@ -109,11 +123,12 @@ module cpuControlLogic(
 		// Memory
 		else if(opcode == LI) begin
 			MB <= 1; 
-			resultSource <= SOURCE_RAM;
+			resultSource <= SOURCE_IMMEDIATE; 
+			//resultSource <= SOURCE_RAM;
 		end else if(opcode == LW) begin
 			resultSource <= SOURCE_RAM;
 		end else if(opcode == SW) begin
-			MW <= 1; 
+			resultSource <= SOURCE_RAM;
 			RW <= 0;
 		end
 		
@@ -121,26 +136,40 @@ module cpuControlLogic(
 		else if(opcode == BIZ) begin
 			PS <= PC_REL_JUMP;
 			BC <= BC_ZERO;
+			RW <= 0;
 		end else if(opcode == BNZ) begin
 			PS <= PC_REL_JUMP;
 			BC <= BC_NZERO;
+			RW <= 0;
 		end
 		
 		// Jump
 		else if(opcode == JAL) begin
 			PS <= PC_ABS_JUMP;
-			resultSource <= SOURCE_RAM;
+			resultSource <= SOURCE_PC;
 		end else if(opcode == JMP) begin
 			PS <= PC_REL_JUMP;
+			RW <= 0;
 		end else begin //opcode JR or EOE
 			if(Rd == 0) begin
 				PS <= PC_REL_JUMP;
-			end else begin
-				PS <= PC_HOLD;
-				NS <= S_FETCH;
-				IL <= 0;
-			end
+				RW <= 0;
+			//end else if(firstInstruction) begin //Reading the very first instruction
+				//NS <= S_FETCH;
+				//IL <= 1;
+			//end else begin // ERROR -- HALT
+			//	PS <= PC_HOLD;
+			//	NS <= S_FETCH;
+			//	IL <= 0;
+			//	EOE <= 1;
+			end 
 		end
+		
+		if(S == 0) begin
+			PS <= 01; 
+		end
+		
+		
 	end
 
 endmodule

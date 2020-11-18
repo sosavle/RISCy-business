@@ -23,7 +23,7 @@ module registerFile(
 	 input reset,
 	 
     input [addressWidth-1:0] DA, // Destination address
-	 input [registerDataWidth-1:0] D, // Value to write to destination address
+	 input [registerDataWidth-1:0] result, // Value to write to destination address
     input [addressWidth-1:0] AA, // Address to read as operand A
     input [addressWidth-1:0] BA, // Address to read as operand B
 	 input RW, // Read or write to register file
@@ -42,7 +42,7 @@ module registerFile(
 	integer i; //Used to address each register
 	
 	always@(posedge clk) begin
-		if(reset) begin
+		if(reset == 1) begin
 			for(i=0; i<numRegisters; i=i+1) begin
 				userRegisters[i] <= i; // Initialize registers with their index value
 			end
@@ -51,8 +51,8 @@ module registerFile(
 			Aout <= userRegisters[AA];
 			Bout <= userRegisters[BA];
 			Dout <= userRegisters[DA];
-		end else begin
-			userRegisters[DA] <= D;
+		end else if(reset == 0) begin
+			userRegisters[DA] <= result;
 		end
 	end
 

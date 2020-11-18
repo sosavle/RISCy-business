@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2020-11-15T21:25:58</DateModified>
+  <DateModified>2020-11-16T14:05:23</DateModified>
   <ModuleName>CPU</ModuleName>
-  <SummaryTimeStamp>2020-11-15T20:39:16</SummaryTimeStamp>
+  <SummaryTimeStamp>2020-11-16T13:35:34</SummaryTimeStamp>
   <SavedFilePath>C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/iseconfig/top_level.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject</ImplementationReportsDirectory>
   <DateInitialized>2020-11-15T21:25:58</DateInitialized>

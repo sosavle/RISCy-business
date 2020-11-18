@@ -23,7 +23,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 module tb_CPU;
-
+ 
 	// Inputs
 	reg [15:0] data_from_rom;
 	reg reset;
@@ -36,31 +36,47 @@ module tb_CPU;
 	wire [5:0] address_to_ram;
 	wire read_enable_to_ram;
 	wire enable_ram_read;
-
+	wire [15:0] D;
 	// Bidirs
 	wire [15:1] data_ram;
 
 	// Instantiate the Unit Under Test (UUT)
 	CPU uut (
 		.data_from_rom(data_from_rom), 
-		.reset(reset), 
+		.reset(reset),  
 		.clk(clk), 
 		.data_ram(data_ram), 
 		.address_to_rom(address_to_rom), 
-		.enable_to_rom(enable_to_rom), 
+		.enable_to_rom(enable_to_rom),  
 		.write_enable_to_ram(write_enable_to_ram), 
 		.address_to_ram(address_to_ram), 
 		.read_enable_to_ram(read_enable_to_ram), 
-		.enable_ram_read(enable_ram_read)
+		.enable_ram_read(enable_ram_read),
+		.D(D)
 	);
 
+	assign data_ram = 69;
 	initial begin
 		// Initialize Inputs
-		data_from_rom = 0;
+		data_from_rom = 16'h0324;
 		reset = 1;
 		clk = 1;
-		# 10;
+		# 10; 
 		reset = 0; 
+		# 50;
+		data_from_rom = 16'h0313;
+		# 40;
+		data_from_rom = 16'h0363;
+		# 40; // Load -1 into R8
+		data_from_rom = 16'h88FF;
+		# 40; // Load 
+		// TODO: LW
+		//# 40; // Do not jump because R0 has -1
+		data_from_rom = 16'hB8F0;
+		# 40; // Load 0 into R8
+		data_from_rom = 16'h8800;
+		# 40; // Jump -16 because R8 has 0
+		data_from_rom = 16'hB8F0;
         
 		// Add stimulus here
 

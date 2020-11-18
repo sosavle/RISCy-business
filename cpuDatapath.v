@@ -26,8 +26,7 @@ module cpuDatapath(
 	 input [addressWidth-1:0] BA,
 	 input [fsWidth-1:0] FS,
 	 input MB,
-	 input MD, // Input from Mem
-	 input BL,
+	 input [resultSourceWidth-1:0] resultSource,
 	 input RW,
 	 input [memInWidth-1:0] MemIn,
 	 input [busSize-1:0] PC,
@@ -39,27 +38,38 @@ module cpuDatapath(
 	localparam busSize = 16;
 	localparam addressWidth = 4;
 	localparam opcodeWidth = 4;
-	localparam memInWidth = 6;
+	localparam memInWidth = 16;
 	localparam fsWidth = 3;
+	localparam resultSourceWidth = 2;
+	//localparam memAddressWidth = 6;
+	
+	localparam SOURCE_F = 0;
+	localparam SOURCE_PC = 1;
+	localparam SOURCE_RAM = 2;
+	localparam SOURCE_IMMEDIATE = 3;
 
 	 
 	 wire [busSize-1:0] Aout;
 	 wire [busSize-1:0] Bout;
-	 wire [busSize-1:0] inT = MB? Bout : BA;
+	 wire [busSize-1:0] inT = MB? BA : Bout;
 	 wire [busSize-1:0] F;
+	 reg [busSize-1:0] result;
 	 
-	 // {MD,BL} == 0 --> D = F
-    //         == 1 --> D = PC
-    //         == 2 --> D = ROM_In
-    //         == 3 --> D = RAM_In
-	 wire [busSize-1:0] D = MD? (BL? F : PC) : (BL? MemIn : 0);
+	 always @(resultSource, F, PC, MemIn) begin
+		case(resultSource)
+			SOURCE_F: result <= F;
+			SOURCE_PC: result <= PC;
+			SOURCE_RAM: result <= MemIn;
+			default: result <= { {busSize/2{AA[addressWidth-1]}}, AA, BA};
+		endcase
+	 end
 
 	 
 	 registerFile regFile(
 		 .clk(clk),
 		 .reset(reset),
 		 .DA(DA),
-		 .D(D), 
+		 .result(result), 
 		 .AA(AA),
 		 .BA(BA),
 		 .RW(RW),

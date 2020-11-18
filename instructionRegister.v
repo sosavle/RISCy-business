@@ -41,14 +41,12 @@ module instructionRegister(
 	
 	reg [instructionWidth-1:0] currentInstruction;
 	
-	always @(posedge clk) begin
-		if(IL == 1 || reset == 1) begin
-			currentInstruction <= IR; 
-		end else begin
-			opcode <= currentInstruction[opcodeBegin:opcodeEnd];
-			DA <= currentInstruction[dBegin:dEnd];
-			AA <= currentInstruction[aBegin:aEnd];
-			BA <= currentInstruction[bBegin:bEnd];
+	always @(IL) begin
+		if(IL == 1) begin
+			opcode <= IR[opcodeBegin:opcodeEnd];
+			DA <= IR[dBegin:dEnd];
+			AA <= IR[aBegin:aEnd];
+			BA <= IR[bBegin:bEnd];
 		end
 	end
 

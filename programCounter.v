@@ -46,7 +46,6 @@ module programCounter(
 	localparam BC_NZERO = 1;
 	
 	wire signed [offsetWidth-1:0] offset = {AA, BA};
-	reg branchTaken;
 
 	always@(posedge clk) begin
 		
@@ -57,13 +56,13 @@ module programCounter(
 		
 		// Update program counter
 		else begin
-			// Default behavior is to PC = PC + 1
-			instructionAddress <= instructionAddress + 1;
+			// Default behavior is to PC = PC
+			instructionAddress <= instructionAddress;
 			
 			case(PS)
 				PC_REL_JUMP:
 					if(BC == (|D)) begin
-						instructionAddress <= instructionAddress + 1 + offset;
+						instructionAddress <= instructionAddress + offset;
 					end 
 					
 				PC_ABS_JUMP:
@@ -71,8 +70,8 @@ module programCounter(
 						instructionAddress <= D;
 					end
 				
-				PC_HOLD:
-					instructionAddress <= instructionAddress;
+				PC_INCREMENT:
+					instructionAddress <= instructionAddress + 1;
 			endcase
 		end
 	end

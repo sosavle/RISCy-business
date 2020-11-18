@@ -37,10 +37,9 @@ module tb_controller;
 	wire [3:0] BA;
 	wire [2:0] FS;
 	wire MB;
-	wire MD;
 	wire RW;
 	wire MW;
-	wire BL;
+	wire [1:0] resultSource;
 
 	// Instantiate the Unit Under Test (UUT)
 	cpuController uut (
@@ -53,11 +52,10 @@ module tb_controller;
 		.AA(AA), 
 		.BA(BA), 
 		.FS(FS), 
-		.MB(MB), 
-		.MD(MD), 
+		.MB(MB),  
 		.RW(RW), 
 		.MW(MW), 
-		.BL(BL)
+		.resultSource(resultSource)
 	);
 
 	initial begin
