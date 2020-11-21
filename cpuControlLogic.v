@@ -29,7 +29,7 @@ module cpuControlLogic(
 	 output reg [resultSourceWidth-1:0] resultSource,  // Data from memory
 	 output reg RW,  // Read/Write from/to register file
 	 output reg MW,  // Write value from register file into memory
-	 output reg BC,  // Branch condition
+	 output reg [bcWidth-1:0] BC,  // Branch condition
 	 output reg IL,   // Instruction Load
 	 output reg EOE // End of Execution
     );
@@ -38,6 +38,7 @@ module cpuControlLogic(
 	 localparam psWidth = 2;
 	 localparam rdWidth = 4;
 	 localparam fsWidth = 3;
+	 localparam bcWidth = 2;
 	 localparam resultSourceWidth = 2;
 	 
 	 localparam S_FETCH = 0;
@@ -50,6 +51,8 @@ module cpuControlLogic(
 	 
 	 localparam BC_ZERO = 0;
 	 localparam BC_NZERO = 1;
+	 //localparam BC_NEGATIVE = 2;
+	 localparam BC_ALWAYS = 3;
 	 
 	 localparam SOURCE_F = 0;
 	 localparam SOURCE_PC = 1;
@@ -93,8 +96,8 @@ module cpuControlLogic(
 		end
 	end 
 
-	always@(S) begin
-		if(firstInstruction) begin
+	always@(S, EOE) begin
+		if(firstInstruction || EOE) begin
 			NS <= S_FETCH;
 			IL <= 0;
 		end else begin
@@ -111,7 +114,7 @@ module cpuControlLogic(
 		resultSource <= SOURCE_F; 
 		RW <= S; 
 		MW <= 0;
-		BC <= 0;
+		BC <= BC_ALWAYS;
 		EOE <= 0;
 
 
@@ -130,6 +133,9 @@ module cpuControlLogic(
 		end else if(opcode == SW) begin
 			resultSource <= SOURCE_RAM;
 			RW <= 0;
+			if(S == S_EXECUTE) begin
+				MW <= 1;
+			end
 		end
 		
 		// Branch
@@ -141,27 +147,27 @@ module cpuControlLogic(
 			PS <= PC_REL_JUMP;
 			BC <= BC_NZERO;
 			RW <= 0;
-		end
+		end 
 		
 		// Jump
 		else if(opcode == JAL) begin
-			PS <= PC_ABS_JUMP;
+			PS <= PC_REL_JUMP;
 			resultSource <= SOURCE_PC;
+			RW <= 1;
 		end else if(opcode == JMP) begin
 			PS <= PC_REL_JUMP;
 			RW <= 0;
 		end else begin //opcode JR or EOE
 			if(Rd == 0) begin
-				PS <= PC_REL_JUMP;
+				PS <= PC_ABS_JUMP;
 				RW <= 0;
 			//end else if(firstInstruction) begin //Reading the very first instruction
 				//NS <= S_FETCH;
 				//IL <= 1;
-			//end else begin // ERROR -- HALT
-			//	PS <= PC_HOLD;
-			//	NS <= S_FETCH;
-			//	IL <= 0;
-			//	EOE <= 1;
+			end else if(Rd == 4'hF) begin
+				PS <= PC_HOLD;
+				EOE <= 1;
+				RW <= 0;
 			end 
 		end
 		

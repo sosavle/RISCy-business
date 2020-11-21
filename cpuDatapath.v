@@ -28,11 +28,13 @@ module cpuDatapath(
 	 input MB,
 	 input [resultSourceWidth-1:0] resultSource,
 	 input RW,
-	 input [memInWidth-1:0] MemIn,
-	 input [busSize-1:0] PC,
+	 input MW,
+	 inout [memInWidth-1:0] MemInOut,
+	 input [memInWidth-1:0] PC,
 	 
 	 output [busSize-1:0] Dout, // Value at the destination register (For use with branching)
-	 output MemAddr 
+	 output [busSize-1:0] Aout, // Value at source register (For use when jumping)
+	 output [memAddressWidth-1:0] memAddr 
     );
 	 
 	localparam busSize = 16;
@@ -41,7 +43,7 @@ module cpuDatapath(
 	localparam memInWidth = 16;
 	localparam fsWidth = 3;
 	localparam resultSourceWidth = 2;
-	//localparam memAddressWidth = 6;
+	localparam memAddressWidth = 6;
 	
 	localparam SOURCE_F = 0;
 	localparam SOURCE_PC = 1;
@@ -49,17 +51,20 @@ module cpuDatapath(
 	localparam SOURCE_IMMEDIATE = 3;
 
 	 
-	 wire [busSize-1:0] Aout;
+	 //wire [busSize-1:0] Aout;
 	 wire [busSize-1:0] Bout;
 	 wire [busSize-1:0] inT = MB? BA : Bout;
 	 wire [busSize-1:0] F;
 	 reg [busSize-1:0] result;
 	 
-	 always @(resultSource, F, PC, MemIn) begin
+	 assign memAddr = Aout[memAddressWidth-1:0];
+	 assign MemInOut = MW? Bout : {(memInWidth){1'bZ}} ;
+	 
+	 always @(resultSource, F, PC, MemInOut, AA, BA) begin
 		case(resultSource)
 			SOURCE_F: result <= F;
-			SOURCE_PC: result <= PC;
-			SOURCE_RAM: result <= MemIn;
+			SOURCE_PC: result <= { {(busSize-memInWidth){1'b0}}, PC};
+			SOURCE_RAM: result <= MemInOut;
 			default: result <= { {busSize/2{AA[addressWidth-1]}}, AA, BA};
 		endcase
 	 end

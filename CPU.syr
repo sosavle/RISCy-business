@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.25 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> Reading design: CPU.prj
 
@@ -118,6 +118,7 @@ Analyzing Verilog file "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\Final
 Parsing module <functionalUnit>.
 Analyzing Verilog file "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuControlLogic.v" into library work
 Parsing module <cpuControlLogic>.
+WARNING:HDLCompiler:327 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuControlLogic.v" Line 111: Concatenation with unsized literal; will interpret as 32 bits
 Analyzing Verilog file "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuDatapath.v" into library work
 Parsing module <cpuDatapath>.
 Analyzing Verilog file "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuController.v" into library work
@@ -130,6 +131,7 @@ Parsing module <CPU>.
 =========================================================================
 
 Elaborating module <CPU>.
+WARNING:HDLCompiler:413 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 56: Result of 16-bit expression is truncated to fit in 6-bit target.
 
 Elaborating module <cpuController>.
 
@@ -138,24 +140,22 @@ WARNING:HDLCompiler:91 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\Fin
 WARNING:HDLCompiler:91 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\instructionRegister.v" Line 47: Signal <IR> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
 WARNING:HDLCompiler:91 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\instructionRegister.v" Line 48: Signal <IR> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
 WARNING:HDLCompiler:91 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\instructionRegister.v" Line 49: Signal <IR> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:327 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuControlLogic.v" Line 111: Concatenation with unsized literal; will interpret as 32 bits
 
 Elaborating module <cpuControlLogic>.
-WARNING:HDLCompiler:91 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuControlLogic.v" Line 97: Signal <firstInstruction> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
+WARNING:HDLCompiler:91 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuControlLogic.v" Line 100: Signal <firstInstruction> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
 
 Elaborating module <programCounter>.
-WARNING:HDLCompiler:413 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 74: Result of 17-bit expression is truncated to fit in 16-bit target.
-WARNING:HDLCompiler:189 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 60: Size mismatch in connection of port <PC>. Formal port size is 16-bit while actual signal size is 6-bit.
+WARNING:HDLCompiler:413 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 73: Result of 8-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 76: Result of 7-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 79: Result of 7-bit expression is truncated to fit in 6-bit target.
+WARNING:HDLCompiler:189 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 65: Size mismatch in connection of port <PC>. Formal port size is 6-bit while actual signal size is 16-bit.
 
 Elaborating module <cpuDatapath>.
-WARNING:HDLCompiler:91 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuDatapath.v" Line 63: Signal <AA> missing in the sensitivity list is added for synthesis purposes. HDL and post-synthesis simulations may differ as a result.
 
 Elaborating module <registerFile>.
 
 Elaborating module <functionalUnit>.
-WARNING:HDLCompiler:189 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 83: Size mismatch in connection of port <MemIn>. Formal port size is 16-bit while actual signal size is 15-bit.
-WARNING:HDLCompiler:189 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 84: Size mismatch in connection of port <PC>. Formal port size is 16-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 86: Size mismatch in connection of port <MemAddr>. Formal port size is 1-bit while actual signal size is 6-bit.
-WARNING:HDLCompiler:634 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v" Line 84: Net <PC> does not have a driver.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -163,7 +163,6 @@ WARNING:HDLCompiler:634 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\Fi
 
 Synthesizing Unit <CPU>.
     Related source file is "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\CPU.v".
-WARNING:Xst:653 - Signal <PC> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Summary:
 	no macro.
 Unit <CPU> synthesized.
@@ -202,32 +201,49 @@ Synthesizing Unit <cpuControlLogic>.
     Related source file is "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuControlLogic.v".
     Found 1-bit register for signal <S>.
     Found 1-bit register for signal <firstInstruction>.
-    Found 4-bit comparator lessequal for signal <n0005> created at line 119
+    Found 4-bit comparator lessequal for signal <n0006> created at line 122
     Summary:
 	inferred   2 D-type flip-flop(s).
 	inferred   1 Comparator(s).
-	inferred  18 Multiplexer(s).
+	inferred  25 Multiplexer(s).
 Unit <cpuControlLogic> synthesized.
 
 Synthesizing Unit <programCounter>.
     Related source file is "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v".
-    Found 16-bit register for signal <instructionAddress>.
-    Found 16-bit adder for signal <instructionAddress[15]_GND_21_o_add_5_OUT> created at line 65.
-    Found 16-bit adder for signal <instructionAddress[15]_GND_21_o_add_10_OUT> created at line 74.
-    Found 1-bit comparator not equal for signal <BC_D[15]_equal_9_o> created at line 69
+WARNING:Xst:647 - Input <A<15:6>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 6-bit register for signal <instructionAddress>.
+    Found 8-bit adder for signal <n0020> created at line 73.
+    Found 6-bit adder for signal <instructionAddress[5]_GND_21_o_add_7_OUT> created at line 79.
+    Found 2-bit comparator equal for signal <BC[1]_GND_21_o_equal_6_o> created at line 70
     Summary:
-	inferred   1 Adder/Subtractor(s).
-	inferred  16 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   6 D-type flip-flop(s).
 	inferred   1 Comparator(s).
-	inferred   4 Multiplexer(s).
+	inferred   2 Multiplexer(s).
 Unit <programCounter> synthesized.
 
 Synthesizing Unit <cpuDatapath>.
     Related source file is "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuDatapath.v".
-WARNING:Xst:653 - Signal <MemAddr> is used but never assigned. This sourceless signal will be automatically connected to value GND.
-    Found 16-bit 4-to-1 multiplexer for signal <result> created at line 59.
+    Found 16-bit 4-to-1 multiplexer for signal <result> created at line 64.
+    Found 1-bit tristate buffer for signal <MemInOut<15>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<14>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<13>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<12>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<11>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<10>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<9>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<8>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<7>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<6>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<5>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<4>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<3>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<2>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<1>> created at line 61
+    Found 1-bit tristate buffer for signal <MemInOut<0>> created at line 61
     Summary:
 	inferred   2 Multiplexer(s).
+	inferred  16 Tristate(s).
 Unit <cpuDatapath> synthesized.
 
 Synthesizing Unit <registerFile>.
@@ -258,26 +274,31 @@ Unit <functionalUnit> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 2
- 16-bit adder                                          : 1
+# Adders/Subtractors                                   : 3
  17-bit addsub                                         : 1
+ 6-bit adder                                           : 1
+ 8-bit adder                                           : 1
 # Registers                                            : 7
  1-bit register                                        : 2
- 16-bit register                                       : 4
+ 16-bit register                                       : 3
  256-bit register                                      : 1
+ 6-bit register                                        : 1
 # Latches                                              : 16
  1-bit latch                                           : 16
 # Comparators                                          : 2
- 1-bit comparator not equal                            : 1
+ 2-bit comparator equal                                : 1
  4-bit comparator lessequal                            : 1
-# Multiplexers                                         : 49
- 1-bit 2-to-1 multiplexer                              : 8
+# Multiplexers                                         : 54
+ 1-bit 2-to-1 multiplexer                              : 16
  16-bit 16-to-1 multiplexer                            : 3
- 16-bit 2-to-1 multiplexer                             : 21
+ 16-bit 2-to-1 multiplexer                             : 17
  16-bit 4-to-1 multiplexer                             : 1
  17-bit 2-to-1 multiplexer                             : 6
- 2-bit 2-to-1 multiplexer                              : 9
+ 2-bit 2-to-1 multiplexer                              : 8
  3-bit 2-to-1 multiplexer                              : 1
+ 6-bit 2-to-1 multiplexer                              : 2
+# Tristates                                            : 16
+ 1-bit tristate buffer                                 : 16
 # Xors                                                 : 1
  17-bit xor2                                           : 1
 
@@ -289,26 +310,33 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 =========================================================================
 
 
+Synthesizing (advanced) Unit <programCounter>.
+The following registers are absorbed into counter <instructionAddress>: 1 register on signal <instructionAddress>.
+Unit <programCounter> synthesized (advanced).
+
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
 # Adders/Subtractors                                   : 2
- 16-bit adder                                          : 1
  17-bit addsub                                         : 1
-# Registers                                            : 322
- Flip-Flops                                            : 322
+ 6-bit adder                                           : 1
+# Counters                                             : 1
+ 6-bit up counter                                      : 1
+# Registers                                            : 306
+ Flip-Flops                                            : 306
 # Comparators                                          : 2
- 1-bit comparator not equal                            : 1
+ 2-bit comparator equal                                : 1
  4-bit comparator lessequal                            : 1
-# Multiplexers                                         : 49
- 1-bit 2-to-1 multiplexer                              : 8
+# Multiplexers                                         : 53
+ 1-bit 2-to-1 multiplexer                              : 16
  16-bit 16-to-1 multiplexer                            : 3
- 16-bit 2-to-1 multiplexer                             : 21
+ 16-bit 2-to-1 multiplexer                             : 17
  16-bit 4-to-1 multiplexer                             : 1
  17-bit 2-to-1 multiplexer                             : 6
- 2-bit 2-to-1 multiplexer                              : 9
+ 2-bit 2-to-1 multiplexer                              : 8
  3-bit 2-to-1 multiplexer                              : 1
+ 6-bit 2-to-1 multiplexer                              : 1
 # Xors                                                 : 1
  17-bit xor2                                           : 1
 
@@ -329,16 +357,6 @@ Optimizing unit <cpuControlLogic> ...
 Optimizing unit <registerFile> ...
 
 Optimizing unit <functionalUnit> ...
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_15> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_14> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_13> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_12> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_11> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_10> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_9> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_8> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_7> of sequential type is unconnected in block <CPU>.
-WARNING:Xst:2677 - Node <controller/progCount/instructionAddress_6> of sequential type is unconnected in block <CPU>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -374,15 +392,15 @@ Top Level Output File Name         : CPU.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 833
+# BELS                             : 826
 #      GND                         : 1
-#      LUT2                        : 5
-#      LUT3                        : 1
-#      LUT4                        : 50
-#      LUT5                        : 266
-#      LUT6                        : 316
+#      LUT2                        : 11
+#      LUT3                        : 2
+#      LUT4                        : 43
+#      LUT5                        : 268
+#      LUT6                        : 309
 #      MUXCY                       : 20
-#      MUXF7                       : 104
+#      MUXF7                       : 102
 #      MUXF8                       : 48
 #      XORCY                       : 22
 # FlipFlops/Latches                : 328
@@ -392,9 +410,10 @@ Primitive and Black Box Usage:
 #      LD                          : 16
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 64
-#      IBUF                        : 32
-#      OBUF                        : 32
+# IO Buffers                       : 49
+#      IBUF                        : 17
+#      IOBUF                       : 16
+#      OBUF                        : 16
 
 Device utilization summary:
 ---------------------------
@@ -404,19 +423,19 @@ Selected Device : 7a100tcsg324-1
 
 Slice Logic Utilization: 
  Number of Slice Registers:             312  out of  126800     0%  
- Number of Slice LUTs:                  638  out of  63400     1%  
-    Number used as Logic:               638  out of  63400     1%  
+ Number of Slice LUTs:                  633  out of  63400     0%  
+    Number used as Logic:               633  out of  63400     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    686
-   Number with an unused Flip Flop:     374  out of    686    54%  
-   Number with an unused LUT:            48  out of    686     6%  
-   Number of fully used LUT-FF pairs:   264  out of    686    38%  
+ Number of LUT Flip Flop pairs used:    682
+   Number with an unused Flip Flop:     370  out of    682    54%  
+   Number with an unused LUT:            49  out of    682     7%  
+   Number of fully used LUT-FF pairs:   263  out of    682    38%  
    Number of unique control sets:         4
 
 IO Utilization: 
- Number of IOs:                          65
- Number of bonded IOBs:                  65  out of    210    30%  
+ Number of IOs:                          50
+ Number of bonded IOBs:                  50  out of    210    23%  
     IOB Flip Flops/Latches:              16
 
 Specific Feature Utilization:
@@ -440,12 +459,12 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
---------------------------------------------------+------------------------------------------+-------+
-Clock Signal                                      | Clock buffer(FF name)                    | Load  |
---------------------------------------------------+------------------------------------------+-------+
-clk                                               | BUFGP                                    | 312   |
-enable_to_rom_OBUF(controller/control/Mmux_IL11:O)| NONE(*)(controller/instruction/opcode_15)| 16    |
---------------------------------------------------+------------------------------------------+-------+
+-------------------------------------------------+------------------------------------------+-------+
+Clock Signal                                     | Clock buffer(FF name)                    | Load  |
+-------------------------------------------------+------------------------------------------+-------+
+clk                                              | BUFGP                                    | 312   |
+enable_to_rom_OBUF(controller/control/Mmux_IL1:O)| NONE(*)(controller/instruction/opcode_15)| 16    |
+-------------------------------------------------+------------------------------------------+-------+
 (*) This 1 clock signal(s) are generated by combinatorial logic,
 and XST is not able to identify which are the primary clock signals.
 Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
@@ -459,9 +478,9 @@ Timing Summary:
 ---------------
 Speed Grade: -1
 
-   Minimum period: 3.754ns (Maximum Frequency: 266.418MHz)
-   Minimum input arrival time before clock: 3.876ns
-   Maximum output required time after clock: 2.242ns
+   Minimum period: 3.932ns (Maximum Frequency: 254.307MHz)
+   Minimum input arrival time before clock: 2.780ns
+   Maximum output required time after clock: 2.888ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -470,66 +489,53 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 3.754ns (frequency: 266.418MHz)
-  Total number of paths / destination ports: 10676 / 365
+  Clock period: 3.932ns (frequency: 254.307MHz)
+  Total number of paths / destination ports: 10777 / 365
 -------------------------------------------------------------------------
-Delay:               3.754ns (Levels of Logic = 19)
+Delay:               3.932ns (Levels of Logic = 7)
   Source:            datapath/regFile/Bout_0 (FF)
-  Destination:       datapath/regFile/userRegisters_0_255 (FF)
+  Destination:       datapath/regFile/userRegisters_0_242 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: datapath/regFile/Bout_0 to datapath/regFile/userRegisters_0_255
+  Data Path: datapath/regFile/Bout_0 to datapath/regFile/userRegisters_0_242
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              2   0.478   0.542  datapath/regFile/Bout_0 (datapath/regFile/Bout_0)
+     FDE:C->Q              4   0.478   0.556  datapath/regFile/Bout_0 (datapath/regFile/Bout_0)
      LUT6:I4->O            1   0.124   0.000  datapath/fUnit/Mmux_tempResult1_rs_lut<0> (datapath/fUnit/Mmux_tempResult1_rs_lut<0>)
      MUXCY:S->O            1   0.472   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<0> (datapath/fUnit/Mmux_tempResult1_rs_cy<0>)
      MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<1> (datapath/fUnit/Mmux_tempResult1_rs_cy<1>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<2> (datapath/fUnit/Mmux_tempResult1_rs_cy<2>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<3> (datapath/fUnit/Mmux_tempResult1_rs_cy<3>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<4> (datapath/fUnit/Mmux_tempResult1_rs_cy<4>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<5> (datapath/fUnit/Mmux_tempResult1_rs_cy<5>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<6> (datapath/fUnit/Mmux_tempResult1_rs_cy<6>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<7> (datapath/fUnit/Mmux_tempResult1_rs_cy<7>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<8> (datapath/fUnit/Mmux_tempResult1_rs_cy<8>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<9> (datapath/fUnit/Mmux_tempResult1_rs_cy<9>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<10> (datapath/fUnit/Mmux_tempResult1_rs_cy<10>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<11> (datapath/fUnit/Mmux_tempResult1_rs_cy<11>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<12> (datapath/fUnit/Mmux_tempResult1_rs_cy<12>)
-     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<13> (datapath/fUnit/Mmux_tempResult1_rs_cy<13>)
-     MUXCY:CI->O           0   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<14> (datapath/fUnit/Mmux_tempResult1_rs_cy<14>)
-     XORCY:CI->O           1   0.510   0.421  datapath/fUnit/Mmux_tempResult1_rs_xor<15> (datapath/fUnit/Mmux_tempResult1_split<15>)
-     LUT6:I5->O           16   0.124   0.519  datapath/Mmux_result73 (datapath/result<15>)
-     LUT5:I4->O            1   0.124   0.000  datapath/regFile/userRegisters[15][15]_userRegisters[15][15]_mux_29_OUT<95>1 (datapath/regFile/userRegisters[15][15]_userRegisters[15][15]_mux_29_OUT<95>)
-     FD:D                      0.030          datapath/regFile/userRegisters_0_95
+     XORCY:CI->O           1   0.510   0.421  datapath/fUnit/Mmux_tempResult1_rs_xor<2> (datapath/fUnit/Mmux_tempResult1_split<2>)
+     LUT6:I5->O            1   0.124   0.421  datapath/Mmux_result93 (datapath/Mmux_result92)
+     LUT6:I5->O           16   0.124   0.519  datapath/Mmux_result94 (datapath/result<2>)
+     LUT5:I4->O            1   0.124   0.000  datapath/regFile/userRegisters[15][15]_userRegisters[15][15]_mux_29_OUT<50>2 (datapath/regFile/userRegisters[15][15]_userRegisters[15][15]_mux_29_OUT<50>)
+     FD:D                      0.030          datapath/regFile/userRegisters_0_50
     ----------------------------------------
-    Total                      3.754ns (2.272ns logic, 1.482ns route)
-                                       (60.5% logic, 39.5% route)
+    Total                      3.932ns (2.015ns logic, 1.917ns route)
+                                       (51.2% logic, 48.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 968 / 264
+  Total number of paths / destination ports: 664 / 264
 -------------------------------------------------------------------------
-Offset:              3.876ns (Levels of Logic = 5)
-  Source:            data_ram<2> (PAD)
-  Destination:       datapath/regFile/userRegisters_0_241 (FF)
+Offset:              2.780ns (Levels of Logic = 4)
+  Source:            data_ram<7> (PAD)
+  Destination:       datapath/regFile/userRegisters_0_247 (FF)
   Destination Clock: clk rising
 
-  Data Path: data_ram<2> to datapath/regFile/userRegisters_0_241
+  Data Path: data_ram<7> to datapath/regFile/userRegisters_0_247
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             6   0.001   0.972  data_ram_2_IBUF (data_ram_2_IBUF)
-     LUT6:I0->O            1   0.124   0.939  datapath/Mmux_result81_SW1 (N96)
-     LUT6:I0->O            1   0.124   0.919  datapath/Mmux_result83_SW1 (N71)
-     LUT6:I1->O           16   0.124   0.519  datapath/Mmux_result84 (datapath/result<1>)
-     LUT5:I4->O            1   0.124   0.000  datapath/regFile/userRegisters[15][15]_userRegisters[15][15]_mux_29_OUT<81>2 (datapath/regFile/userRegisters[15][15]_userRegisters[15][15]_mux_29_OUT<81>)
-     FD:D                      0.030          datapath/regFile/userRegisters_0_81
+     IOBUF:IO->O           1   0.001   0.939  data_ram_7_IOBUF (N22)
+     LUT6:I0->O            1   0.124   0.919  datapath/Mmux_result143_SW1 (N72)
+     LUT5:I0->O           16   0.124   0.519  datapath/Mmux_result144 (datapath/result<7>)
+     LUT5:I4->O            1   0.124   0.000  datapath/regFile/userRegisters[15][15]_userRegisters[15][15]_mux_29_OUT<87>1 (datapath/regFile/userRegisters[15][15]_userRegisters[15][15]_mux_29_OUT<87>)
+     FD:D                      0.030          datapath/regFile/userRegisters_0_87
     ----------------------------------------
-    Total                      3.876ns (0.527ns logic, 3.349ns route)
-                                       (13.6% logic, 86.4% route)
+    Total                      2.780ns (0.403ns logic, 2.377ns route)
+                                       (14.5% logic, 85.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'enable_to_rom_OBUF'
@@ -552,43 +558,44 @@ Offset:              0.411ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 24 / 23
+  Total number of paths / destination ports: 30 / 29
 -------------------------------------------------------------------------
-Offset:              1.649ns (Levels of Logic = 2)
-  Source:            controller/control/firstInstruction (FF)
+Offset:              2.079ns (Levels of Logic = 2)
+  Source:            controller/control/S (FF)
   Destination:       enable_to_rom (PAD)
   Source Clock:      clk rising
 
-  Data Path: controller/control/firstInstruction to enable_to_rom
+  Data Path: controller/control/S to enable_to_rom
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               2   0.478   0.542  controller/control/firstInstruction (controller/control/firstInstruction)
-     LUT2:I0->O           17   0.124   0.505  controller/control/Mmux_IL11 (enable_to_rom_OBUF)
+     FD:C->Q               5   0.478   0.966  controller/control/S (controller/control/S)
+     LUT6:I0->O           18   0.124   0.511  controller/control/Mmux_IL1 (enable_to_rom_OBUF)
      OBUF:I->O                 0.000          enable_to_rom_OBUF (enable_to_rom)
     ----------------------------------------
-    Total                      1.649ns (0.602ns logic, 1.047ns route)
-                                       (36.5% logic, 63.5% route)
+    Total                      2.079ns (0.602ns logic, 1.477ns route)
+                                       (29.0% logic, 71.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'enable_to_rom_OBUF'
-  Total number of paths / destination ports: 4 / 1
+  Total number of paths / destination ports: 88 / 20
 -------------------------------------------------------------------------
-Offset:              2.242ns (Levels of Logic = 2)
-  Source:            controller/instruction/opcode_14 (LATCH)
-  Destination:       read_enable_to_ram (PAD)
+Offset:              2.888ns (Levels of Logic = 3)
+  Source:            controller/instruction/DA_8 (LATCH)
+  Destination:       enable_to_rom (PAD)
   Source Clock:      enable_to_rom_OBUF falling
 
-  Data Path: controller/instruction/opcode_14 to read_enable_to_ram
+  Data Path: controller/instruction/DA_8 to enable_to_rom
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              78   0.625   0.939  controller/instruction/opcode_14 (controller/instruction/opcode_14)
-     LUT4:I0->O           46   0.124   0.555  controller/control/Mmux_resultSource21 (read_enable_to_ram_OBUF)
-     OBUF:I->O                 0.000          read_enable_to_ram_OBUF (read_enable_to_ram)
+     LD:G->Q              84   0.625   1.083  controller/instruction/DA_8 (controller/instruction/DA_8)
+     LUT5:I0->O            1   0.124   0.421  controller/control/Mmux_IL1_SW0 (N10)
+     LUT6:I5->O           18   0.124   0.511  controller/control/Mmux_IL1 (enable_to_rom_OBUF)
+     OBUF:I->O                 0.000          enable_to_rom_OBUF (enable_to_rom)
     ----------------------------------------
-    Total                      2.242ns (0.749ns logic, 1.493ns route)
-                                       (33.4% logic, 66.6% route)
+    Total                      2.888ns (0.873ns logic, 2.015ns route)
+                                       (30.2% logic, 69.8% route)
 
 =========================================================================
 
@@ -600,21 +607,21 @@ Clock to Setup on destination clock clk
                   | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock      |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ------------------+---------+---------+---------+---------+
-clk               |    3.754|         |         |         |
-enable_to_rom_OBUF|         |    5.362|         |         |
+clk               |    3.932|         |         |         |
+enable_to_rom_OBUF|         |    5.348|         |         |
 ------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 13.00 secs
-Total CPU time to Xst completion: 13.53 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.77 secs
  
 --> 
 
-Total memory usage is 4697852 kilobytes
+Total memory usage is 4703484 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   42 (   0 filtered)
+Number of warnings :   31 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

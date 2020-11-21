@@ -22,9 +22,10 @@ module cpuController(
     input clk,
 	 input reset,
 	 input [busSize-1:0] D,
+	 input [busSize-1:0] A,
 	 input [busSize-1:0] IR,
 	 
-	 output [busSize-1:0] PC,
+	 output [memInWidth-1:0] PC,
 	 output [addressWidth-1:0] DA,
 	 output [addressWidth-1:0] AA,
 	 output [addressWidth-1:0] BA,
@@ -38,16 +39,19 @@ module cpuController(
 
     );
 	 
+	localparam memInWidth = 6;
 	localparam busSize = 16;
 	localparam addressWidth = 4;
 	localparam opcodeWidth = 4;
 	localparam fsWidth = 3;
 	localparam psWidth = 2;
+	localparam bcWidth = 2;
 	localparam resultSourceWidth = 2;
 	
 	reg controlState;
 	wire [opcodeWidth-1:0] opcode;
 	wire [psWidth-1:0] PS;
+	wire [bcWidth-1:0] BC;
 	
 	
 	instructionRegister instruction(
@@ -83,6 +87,7 @@ module cpuController(
 	 .BC(BC), 	
     .PS(PS), 
 	 .D(D), 
+	 .A(A),
 	 .AA(AA), 
 	 .BA(BA), 
     .instructionAddress(PC)

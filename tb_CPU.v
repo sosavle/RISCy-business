@@ -36,9 +36,10 @@ module tb_CPU;
 	wire [5:0] address_to_ram;
 	wire read_enable_to_ram;
 	wire enable_ram_read;
-	wire [15:0] D;
 	// Bidirs
-	wire [15:1] data_ram;
+	wire [15:0] data_ram;
+	
+	assign data_ram = read_enable_to_ram? 69: 16'hZZZZ;
 
 	// Instantiate the Unit Under Test (UUT)
 	CPU uut (
@@ -51,22 +52,36 @@ module tb_CPU;
 		.write_enable_to_ram(write_enable_to_ram), 
 		.address_to_ram(address_to_ram), 
 		.read_enable_to_ram(read_enable_to_ram), 
-		.enable_ram_read(enable_ram_read),
-		.D(D)
+		.enable_ram_read(enable_ram_read)
 	);
 
-	assign data_ram = 69;
 	initial begin
 		// Initialize Inputs
-		data_from_rom = 16'h0324;
 		reset = 1;
 		clk = 1;
-		# 10; 
+		# 10; // r7 = r15(15) + r5(5)
+		data_from_rom = 16'h07F5;
 		reset = 0; 
-		# 50;
+		# 50; // Load Word from address r3[5:0] = 3 into R0
+		data_from_rom = 16'h903F;
+		# 40 // Save the value of R7(20) to address in r1[5:0] = 1
+		data_from_rom = 16'hAF17;
+		
+		
+		/*
 		data_from_rom = 16'h0313;
-		# 40;
-		data_from_rom = 16'h0363;
+		# 40; // Save current PC to R7 and jump 20
+		data_from_rom = 16'hD720;
+		# 40; // Jump -2 (-1)
+		data_from_rom = 16'hE0FE;
+		# 40; // Return to the value stored in R7
+		data_from_rom = 16'hF070;
+		# 60; // End
+		data_from_rom = 16'hFFFF;
+		*/
+		
+		
+		/*data_from_rom = 16'h0363;
 		# 40; // Load -1 into R8
 		data_from_rom = 16'h88FF;
 		# 40; // Load 
@@ -76,7 +91,7 @@ module tb_CPU;
 		# 40; // Load 0 into R8
 		data_from_rom = 16'h8800;
 		# 40; // Jump -16 because R8 has 0
-		data_from_rom = 16'hB8F0;
+		data_from_rom = 16'hB8F0;*/
         
 		// Add stimulus here
 
