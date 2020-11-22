@@ -64,8 +64,8 @@ module programCounter(
 		
 		// Update program counter
 		else begin
-			// Default behavior is to PC = PC
-			instructionAddress <= instructionAddress;
+			// Default behavior is to PC = PC + 1
+			instructionAddress <= instructionAddress + 1;
 			
 			if (BC == BC_ALWAYS || BC == (|D)) begin
 				case(PS)
@@ -75,11 +75,14 @@ module programCounter(
 					PC_ABS_JUMP:
 						instructionAddress <= A[memInWidth-1:0];
 				
-					PC_INCREMENT:
-						instructionAddress <= instructionAddress + 1;
+					PC_HOLD:
+						instructionAddress <= instructionAddress;
+					
+					//default: PC_INCREMENT
+						//instructionAddress <= instructionAddress + 1;
 				endcase	
 			end
-			
+
 			/*case(PS)
 				PC_REL_JUMP:
 					if(BC == BC_ALWAYS || BC == (|D)) begin

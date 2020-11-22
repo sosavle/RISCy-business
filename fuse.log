@@ -26,8 +26,8 @@ Compiling module CPU
 Compiling module tb_CPU
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 3 sub-compilation(s) to finish...
+Waiting for 2 sub-compilation(s) to finish...
 Compiled 10 Verilog Units
 Built simulation executable C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/tb_CPU_isim_beh.exe
-Fuse Memory Usage: 29144 KB
-Fuse CPU Usage: 655 ms
+Fuse Memory Usage: 29236 KB
+Fuse CPU Usage: 905 ms
