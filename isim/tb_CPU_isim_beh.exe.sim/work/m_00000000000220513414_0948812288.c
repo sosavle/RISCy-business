@@ -23,7 +23,7 @@
 #endif
 static const char *ng0 = "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/cpuDatapath.v";
 static unsigned int ng1[] = {0U, 65535U};
-static unsigned int ng2[] = {0U, 0U};
+static int ng2[] = {1, 0};
 static int ng3[] = {8, 0};
 
 
@@ -465,7 +465,8 @@ LAB9:    xsi_set_current_line(66, ng0);
     t2 = (t0 + 4304U);
     t4 = *((char **)t2);
     t2 = ((char*)((ng2)));
-    xsi_vlogtype_concat(t9, 16, 16, 2U, t2, 0, t4, 16);
+    memset(t9, 0, 8);
+    xsi_vlog_unsigned_add(t9, 32, t4, 6, t2, 32);
     t6 = (t0 + 5664);
     xsi_vlogvar_wait_assign_value(t6, t9, 0, 0, 16, 0LL);
     goto LAB15;

@@ -40,13 +40,24 @@ module instructionRegister(
 	localparam bEnd = 0;
 	
 	reg [instructionWidth-1:0] currentInstruction;
-	
-	always @(IL) begin
-		if(IL == 1) begin
+
+	always @(negedge clk) begin
+		if(reset == 1) begin
+			opcode <= 0;
+			DA <= 0;
+			AA <= 0;
+			BA <= 0;
+		end 
+		else if(IL == 1) begin
 			opcode <= IR[opcodeBegin:opcodeEnd];
 			DA <= IR[dBegin:dEnd];
 			AA <= IR[aBegin:aEnd];
 			BA <= IR[bBegin:bEnd];
+		end else begin
+			opcode <= opcode;
+			DA <= DA;
+			AA <= AA;
+			BA <= BA;
 		end
 	end
 

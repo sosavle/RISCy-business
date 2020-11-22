@@ -24,7 +24,7 @@ module programCounter(
 	 input [bcWidth-1:0] BC, 	// Branch Condition
     input [psWidth-1:0] PS, // PC Update Style
 	 input [dWidth-1:0] D, // Value of destination register
-	 input [aWidth-1:0] A,
+	 input [aWidth-1:0] A, // Value of source register
 	 input [aaWidth-1:0] AA, // First half of offset
 	 input [baWidth-1:0] BA, // Second half of offset
     output reg [memInWidth-1:0] instructionAddress
@@ -59,7 +59,7 @@ module programCounter(
 		
 		// Reset
 		if(reset == 1) begin
-			instructionAddress <= 0;
+			instructionAddress <= 0; //{memInWidth{1'b1}};
 		end 
 		
 		// Update program counter
@@ -70,10 +70,10 @@ module programCounter(
 			if (BC == BC_ALWAYS || BC == (|D)) begin
 				case(PS)
 					PC_REL_JUMP:
-					instructionAddress <= instructionAddress + offset;
+						instructionAddress <= instructionAddress + offset + 1;
 					
 					PC_ABS_JUMP:
-						instructionAddress <= A[memInWidth:0];
+						instructionAddress <= A[memInWidth-1:0];
 				
 					PC_INCREMENT:
 						instructionAddress <= instructionAddress + 1;

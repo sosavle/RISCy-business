@@ -25,7 +25,7 @@ module cpuController(
 	 input [busSize-1:0] A,
 	 input [busSize-1:0] IR,
 	 
-	 output [memInWidth-1:0] PC,
+	 output [memAddrWidth-1:0] PC,
 	 output [addressWidth-1:0] DA,
 	 output [addressWidth-1:0] AA,
 	 output [addressWidth-1:0] BA,
@@ -39,7 +39,7 @@ module cpuController(
 
     );
 	 
-	localparam memInWidth = 6;
+	localparam memAddrWidth = 6;
 	localparam busSize = 16;
 	localparam addressWidth = 4;
 	localparam opcodeWidth = 4;

@@ -44,7 +44,7 @@ module CPU(
 	wire [addressWidth-1:0] DA;
 	wire [addressWidth-1:0] AA;
 	wire [addressWidth-1:0] BA;
-	wire [memInWidth-1:0] PC; 
+	wire [memAddrWidth-1:0] PC; 
 	//wire [busSize-1:0] D;
 	wire [fsWidth-1:0] FS;
 	wire [memInWidth-1:0] MemIn;
@@ -53,7 +53,7 @@ module CPU(
 	wire [busSize-1:0] A;
 	
 	assign read_enable_to_ram = ~MW;
-	assign address_to_rom = PC;
+	assign address_to_rom = PC[memAddrWidth-1:0];
 	assign write_enable_to_ram = MW;
 	
 	cpuController controller(

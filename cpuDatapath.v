@@ -30,7 +30,7 @@ module cpuDatapath(
 	 input RW,
 	 input MW,
 	 inout [memInWidth-1:0] MemInOut,
-	 input [memInWidth-1:0] PC,
+	 input [memAddressWidth-1:0] PC,
 	 
 	 output [busSize-1:0] Dout, // Value at the destination register (For use with branching)
 	 output [busSize-1:0] Aout, // Value at source register (For use when jumping)
@@ -60,14 +60,14 @@ module cpuDatapath(
 	 assign memAddr = Aout[memAddressWidth-1:0];
 	 assign MemInOut = MW? Bout : {(memInWidth){1'bZ}} ;
 	 
-	 always @(resultSource, F, PC, MemInOut, AA, BA) begin
+	 always @(negedge clk) begin
 		case(resultSource)
 			SOURCE_F: result <= F;
-			SOURCE_PC: result <= { {(busSize-memInWidth){1'b0}}, PC};
+			SOURCE_PC: result <= (PC + 1); 
 			SOURCE_RAM: result <= MemInOut;
 			default: result <= { {busSize/2{AA[addressWidth-1]}}, AA, BA};
 		endcase
-	 end
+	 end 
 
 	 
 	 registerFile regFile(

@@ -1,3 +1,0 @@
-verilog work "registerFile.v"
-verilog work "functionalUnit.v"
-verilog work "cpuDatapath.v"
