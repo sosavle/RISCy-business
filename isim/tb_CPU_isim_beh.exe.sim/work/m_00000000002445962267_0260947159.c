@@ -239,7 +239,7 @@ LAB19:    xsi_set_current_line(63, ng0);
     t4 = *((char **)t3);
     t3 = ((char*)((ng8)));
     memset(t10, 0, 8);
-    xsi_vlog_signed_lshift(t10, 17, t4, 16, t3, 32);
+    xsi_vlog_signed_arith_lshift(t10, 17, t4, 16, t3, 32);
     t7 = (t0 + 3424);
     xsi_vlogvar_wait_assign_value(t7, t10, 0, 0, 17, 0LL);
     goto LAB25;

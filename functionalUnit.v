@@ -60,7 +60,7 @@ module functionalUnit(
 			NOT:
 				 tempResult <=  ~inS;
 			SLA:
-				 tempResult <= inS << 1;
+				 tempResult <= inS <<< 1;
 			SRA:
 				 tempResult <= inS >>> 1;
 			default:

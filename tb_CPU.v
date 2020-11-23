@@ -59,6 +59,10 @@ module tb_CPU;
 	
 	initial begin
 		// Initialize ROM	
+		//instructions[0] = 16'h8A10; //Load 16 into r10
+		//instructions[1] = 16'h91AF; //Load M[[R10]] = 32 into R1
+		//instructions[2] = 16'hAFA0; //Save R0 = 0 into M[R10] = 16
+		
 		instructions[0] = 16'h8000;
 		instructions[1] = 16'h8101;
 		instructions[2] = 16'h8201;
@@ -125,6 +129,12 @@ module tb_CPU;
 	always @(address_to_rom) 
 		data_from_rom = instructions[address_to_rom];
 	assign data_ram = read_enable_to_ram? mem[address_to_ram]: 16'hZZZZ;
+	
+	always @(clk) begin
+		if(write_enable_to_ram == 1) begin
+			mem[address_to_ram] <= data_ram;
+		end
+	end
 
       
 endmodule

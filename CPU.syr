@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.45 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.11 secs
+Total CPU time to Xst completion: 0.46 secs
  
 --> Reading design: CPU.prj
 
@@ -138,8 +138,8 @@ Elaborating module <instructionRegister>.
 Elaborating module <cpuControlLogic>.
 
 Elaborating module <programCounter>.
+WARNING:HDLCompiler:413 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 68: Result of 7-bit expression is truncated to fit in 6-bit target.
 WARNING:HDLCompiler:413 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 73: Result of 10-bit expression is truncated to fit in 6-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v" Line 79: Result of 7-bit expression is truncated to fit in 6-bit target.
 
 Elaborating module <cpuDatapath>.
 
@@ -186,34 +186,35 @@ Synthesizing Unit <cpuControlLogic>.
     Found 1-bit register for signal <MB>.
     Found 1-bit register for signal <EOE>.
     Found 1-bit register for signal <S>.
-    Found 16x4-bit Read Only RAM for signal <_n0189>
+    Found 16x4-bit Read Only RAM for signal <_n0187>
     Found 4-bit comparator greater for signal <n0002> created at line 138
     Summary:
 	inferred   1 RAM(s).
 	inferred  16 D-type flip-flop(s).
 	inferred   1 Comparator(s).
-	inferred  18 Multiplexer(s).
+	inferred  16 Multiplexer(s).
 Unit <cpuControlLogic> synthesized.
 
 Synthesizing Unit <programCounter>.
     Related source file is "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\programCounter.v".
 WARNING:Xst:647 - Input <A<15:6>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 6-bit register for signal <instructionAddress>.
-    Found 9-bit adder for signal <n0036> created at line 73.
-    Found 9-bit adder for signal <n0022> created at line 73.
-    Found 6-bit adder for signal <instructionAddress[5]_GND_5_o_add_8_OUT> created at line 79.
-    Found 2-bit comparator equal for signal <BC[1]_GND_5_o_equal_6_o> created at line 70
+    Found 6-bit adder for signal <instructionAddress[5]_GND_5_o_add_3_OUT> created at line 68.
+    Found 9-bit adder for signal <n0038> created at line 73.
+    Found 9-bit adder for signal <n0023> created at line 73.
+    Found 2-bit comparator equal for signal <BC[1]_GND_5_o_equal_7_o> created at line 70
     Summary:
 	inferred   3 Adder/Subtractor(s).
 	inferred   6 D-type flip-flop(s).
 	inferred   1 Comparator(s).
-	inferred   2 Multiplexer(s).
+	inferred   3 Multiplexer(s).
 Unit <programCounter> synthesized.
 
 Synthesizing Unit <cpuDatapath>.
     Related source file is "C:\Users\sosav\Downloads\ECE414_Project_Files_2020\FinalProject\cpuDatapath.v".
     Found 16-bit register for signal <result>.
-    Found 16-bit 4-to-1 multiplexer for signal <resultSource[1]_AA[3]_wide_mux_4_OUT> created at line 64.
+    Found 7-bit adder for signal <n0043[6:0]> created at line 66.
+    Found 16-bit 4-to-1 multiplexer for signal <resultSource[1]_AA[3]_wide_mux_5_OUT> created at line 64.
     Found 1-bit tristate buffer for signal <MemInOut<15>> created at line 61
     Found 1-bit tristate buffer for signal <MemInOut<14>> created at line 61
     Found 1-bit tristate buffer for signal <MemInOut<13>> created at line 61
@@ -231,6 +232,7 @@ Synthesizing Unit <cpuDatapath>.
     Found 1-bit tristate buffer for signal <MemInOut<1>> created at line 61
     Found 1-bit tristate buffer for signal <MemInOut<0>> created at line 61
     Summary:
+	inferred   1 Adder/Subtractor(s).
 	inferred  16 D-type flip-flop(s).
 	inferred   2 Multiplexer(s).
 	inferred  16 Tristate(s).
@@ -266,9 +268,10 @@ HDL Synthesis Report
 Macro Statistics
 # RAMs                                                 : 1
  16x4-bit single-port Read Only RAM                    : 1
-# Adders/Subtractors                                   : 4
+# Adders/Subtractors                                   : 5
  17-bit addsub                                         : 1
  6-bit adder                                           : 1
+ 7-bit adder                                           : 1
  9-bit adder                                           : 2
 # Registers                                            : 21
  1-bit register                                        : 7
@@ -281,14 +284,14 @@ Macro Statistics
 # Comparators                                          : 2
  2-bit comparator equal                                : 1
  4-bit comparator greater                              : 1
-# Multiplexers                                         : 47
+# Multiplexers                                         : 46
  1-bit 2-to-1 multiplexer                              : 10
  16-bit 16-to-1 multiplexer                            : 3
  16-bit 2-to-1 multiplexer                             : 17
  16-bit 4-to-1 multiplexer                             : 1
  17-bit 2-to-1 multiplexer                             : 6
- 2-bit 2-to-1 multiplexer                              : 8
- 6-bit 2-to-1 multiplexer                              : 2
+ 2-bit 2-to-1 multiplexer                              : 6
+ 6-bit 2-to-1 multiplexer                              : 3
 # Tristates                                            : 16
  1-bit tristate buffer                                 : 16
 # Xors                                                 : 1
@@ -303,7 +306,7 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 
 
 Synthesizing (advanced) Unit <cpuControlLogic>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0189> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0187> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
     -----------------------------------------------------------------------
     | ram_type           | Distributed                         |          |
     -----------------------------------------------------------------------
@@ -316,23 +319,19 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram__n0189> will be implemented on LUTs 
     -----------------------------------------------------------------------
 Unit <cpuControlLogic> synthesized (advanced).
 
-Synthesizing (advanced) Unit <programCounter>.
-The following registers are absorbed into counter <instructionAddress>: 1 register on signal <instructionAddress>.
-Unit <programCounter> synthesized (advanced).
-
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
 # RAMs                                                 : 1
  16x4-bit single-port distributed Read Only RAM        : 1
-# Adders/Subtractors                                   : 2
+# Adders/Subtractors                                   : 4
  17-bit addsub                                         : 1
+ 6-bit adder                                           : 1
  6-bit adder carry in                                  : 1
-# Counters                                             : 1
- 6-bit up counter                                      : 1
-# Registers                                            : 352
- Flip-Flops                                            : 352
+ 7-bit adder                                           : 1
+# Registers                                            : 358
+ Flip-Flops                                            : 358
 # Comparators                                          : 2
  2-bit comparator equal                                : 1
  4-bit comparator greater                              : 1
@@ -342,8 +341,8 @@ Macro Statistics
  16-bit 2-to-1 multiplexer                             : 17
  16-bit 4-to-1 multiplexer                             : 1
  17-bit 2-to-1 multiplexer                             : 6
- 2-bit 2-to-1 multiplexer                              : 8
- 6-bit 2-to-1 multiplexer                              : 1
+ 2-bit 2-to-1 multiplexer                              : 6
+ 6-bit 2-to-1 multiplexer                              : 3
 # Xors                                                 : 1
  17-bit xor2                                           : 1
 
@@ -370,14 +369,7 @@ Mapping all equations...
 Building and optimizing final netlist ...
 INFO:Xst:2261 - The FF/Latch <controller/control/S> in Unit <CPU> is equivalent to the following FF/Latch, which will be removed : <controller/control/IL> 
 Found area constraint ratio of 100 (+ 5) on block CPU, actual ratio is 1.
-FlipFlop controller/instruction/BA_0 has been replicated 1 time(s)
-INFO:Xst:1843 - HDL ADVISOR - FlipFlop controller/instruction/BA_0 connected to a primary input has been replicated
-FlipFlop controller/instruction/BA_1 has been replicated 1 time(s)
-INFO:Xst:1843 - HDL ADVISOR - FlipFlop controller/instruction/BA_1 connected to a primary input has been replicated
-FlipFlop controller/instruction/BA_2 has been replicated 2 time(s)
-INFO:Xst:1843 - HDL ADVISOR - FlipFlop controller/instruction/BA_2 connected to a primary input has been replicated
-FlipFlop controller/instruction/BA_3 has been replicated 2 time(s)
-INFO:Xst:1843 - HDL ADVISOR - FlipFlop controller/instruction/BA_3 connected to a primary input has been replicated
+FlipFlop controller/control/MB has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -385,8 +377,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 362
- Flip-Flops                                            : 362
+# Registers                                            : 357
+ Flip-Flops                                            : 357
 
 =========================================================================
 
@@ -409,24 +401,25 @@ Top Level Output File Name         : CPU.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 830
+# BELS                             : 850
 #      INV                         : 3
-#      LUT2                        : 22
+#      LUT2                        : 21
 #      LUT3                        : 10
 #      LUT4                        : 63
-#      LUT5                        : 280
-#      LUT6                        : 255
+#      LUT5                        : 256
+#      LUT6                        : 307
 #      MUXCY                       : 20
-#      MUXF7                       : 106
+#      MUXF7                       : 99
 #      MUXF8                       : 48
 #      VCC                         : 1
 #      XORCY                       : 22
-# FlipFlops/Latches                : 362
-#      FD                          : 273
+# FlipFlops/Latches                : 357
+#      FD                          : 257
+#      FD_1                        : 16
 #      FDE                         : 48
-#      FDR                         : 11
+#      FDR                         : 12
 #      FDRE                        : 6
-#      FDRE_1                      : 22
+#      FDRE_1                      : 16
 #      FDS                         : 2
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
@@ -442,15 +435,15 @@ Selected Device : 7a100tcsg324-1
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             362  out of  126800     0%  
- Number of Slice LUTs:                  633  out of  63400     0%  
-    Number used as Logic:               633  out of  63400     0%  
+ Number of Slice Registers:             357  out of  126800     0%  
+ Number of Slice LUTs:                  660  out of  63400     1%  
+    Number used as Logic:               660  out of  63400     1%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    696
-   Number with an unused Flip Flop:     334  out of    696    47%  
-   Number with an unused LUT:            63  out of    696     9%  
-   Number of fully used LUT-FF pairs:   299  out of    696    42%  
+ Number of LUT Flip Flop pairs used:    719
+   Number with an unused Flip Flop:     362  out of    719    50%  
+   Number with an unused LUT:            59  out of    719     8%  
+   Number of fully used LUT-FF pairs:   298  out of    719    41%  
    Number of unique control sets:         7
 
 IO Utilization: 
@@ -481,7 +474,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 362   |
+clk                                | BUFGP                  | 357   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -492,8 +485,8 @@ Timing Summary:
 ---------------
 Speed Grade: -1
 
-   Minimum period: 6.268ns (Maximum Frequency: 159.541MHz)
-   Minimum input arrival time before clock: 2.329ns
+   Minimum period: 7.701ns (Maximum Frequency: 129.853MHz)
+   Minimum input arrival time before clock: 1.940ns
    Maximum output required time after clock: 1.534ns
    Maximum combinational path delay: No path found
 
@@ -503,50 +496,56 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 6.268ns (frequency: 159.541MHz)
-  Total number of paths / destination ports: 4844 / 423
+  Clock period: 7.701ns (frequency: 129.853MHz)
+  Total number of paths / destination ports: 4910 / 419
 -------------------------------------------------------------------------
-Delay:               3.134ns (Levels of Logic = 4)
-  Source:            controller/instruction/BA_3_1 (FF)
-  Destination:       datapath/result_3 (FF)
-  Source Clock:      clk falling
-  Destination Clock: clk rising
+Delay:               3.850ns (Levels of Logic = 11)
+  Source:            datapath/regFile/Bout_0 (FF)
+  Destination:       datapath/result_7 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk falling
 
-  Data Path: controller/instruction/BA_3_1 to datapath/result_3
+  Data Path: datapath/regFile/Bout_0 to datapath/result_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE_1:C->Q           1   0.484   0.421  controller/instruction/BA_3_1 (controller/instruction/BA_3_1)
-     LUT3:I2->O            1   0.124   0.421  datapath/Mmux_inT101 (datapath/inT<3>)
-     LUT6:I5->O            2   0.124   0.405  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_4_OUT101 (datapath/Mmux_resultSource[1]_AA[3]_wide_mux_4_OUT10)
-     MUXF7:S->O            1   0.465   0.536  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_4_OUT103_SW0 (N79)
-     LUT5:I3->O            1   0.124   0.000  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_4_OUT104 (datapath/resultSource[1]_AA[3]_wide_mux_4_OUT<3>)
-     FD:D                      0.030          datapath/result_3
+     FDE:C->Q              4   0.478   0.796  datapath/regFile/Bout_0 (datapath/regFile/Bout_0)
+     LUT5:I1->O            1   0.124   0.000  datapath/fUnit/Mmux_tempResult1_rs_lut<0> (datapath/fUnit/Mmux_tempResult1_rs_lut<0>)
+     MUXCY:S->O            1   0.472   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<0> (datapath/fUnit/Mmux_tempResult1_rs_cy<0>)
+     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<1> (datapath/fUnit/Mmux_tempResult1_rs_cy<1>)
+     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<2> (datapath/fUnit/Mmux_tempResult1_rs_cy<2>)
+     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<3> (datapath/fUnit/Mmux_tempResult1_rs_cy<3>)
+     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<4> (datapath/fUnit/Mmux_tempResult1_rs_cy<4>)
+     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<5> (datapath/fUnit/Mmux_tempResult1_rs_cy<5>)
+     MUXCY:CI->O           1   0.029   0.000  datapath/fUnit/Mmux_tempResult1_rs_cy<6> (datapath/fUnit/Mmux_tempResult1_rs_cy<6>)
+     XORCY:CI->O           1   0.510   0.776  datapath/fUnit/Mmux_tempResult1_rs_xor<7> (datapath/fUnit/Mmux_tempResult1_split<7>)
+     LUT6:I2->O            1   0.124   0.000  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_5_OUT144_F (N174)
+     MUXF7:I0->O           1   0.365   0.000  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_5_OUT144 (datapath/resultSource[1]_AA[3]_wide_mux_5_OUT<7>)
+     FD_1:D                    0.030          datapath/result_7
     ----------------------------------------
-    Total                      3.134ns (1.351ns logic, 1.783ns route)
-                                       (43.1% logic, 56.9% route)
+    Total                      3.850ns (2.278ns logic, 1.572ns route)
+                                       (59.2% logic, 40.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 362 / 336
+  Total number of paths / destination ports: 338 / 325
 -------------------------------------------------------------------------
-Offset:              2.329ns (Levels of Logic = 4)
-  Source:            data_ram<2> (PAD)
-  Destination:       datapath/result_2 (FF)
-  Destination Clock: clk rising
+Offset:              1.940ns (Levels of Logic = 3)
+  Source:            data_ram<14> (PAD)
+  Destination:       datapath/result_14 (FF)
+  Destination Clock: clk falling
 
-  Data Path: data_ram<2> to datapath/result_2
+  Data Path: data_ram<14> to datapath/result_14
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IOBUF:IO->O           5   0.001   0.966  data_ram_2_IOBUF (N23)
-     LUT6:I0->O            1   0.124   0.000  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_4_OUT93_SW0_G (N116)
-     MUXF7:I1->O           1   0.368   0.716  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_4_OUT93_SW0 (N82)
-     LUT5:I2->O            1   0.124   0.000  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_4_OUT94 (datapath/resultSource[1]_AA[3]_wide_mux_4_OUT<2>)
-     FD:D                      0.030          datapath/result_2
+     IOBUF:IO->O           2   0.001   0.945  data_ram_14_IOBUF (N13)
+     LUT6:I0->O            1   0.124   0.716  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_5_OUT63_SW1 (N45)
+     LUT6:I3->O            1   0.124   0.000  datapath/Mmux_resultSource[1]_AA[3]_wide_mux_5_OUT64 (datapath/resultSource[1]_AA[3]_wide_mux_5_OUT<14>)
+     FD_1:D                    0.030          datapath/result_14
     ----------------------------------------
-    Total                      2.329ns (0.647ns logic, 1.682ns route)
-                                       (27.8% logic, 72.2% route)
+    Total                      1.940ns (0.279ns logic, 1.661ns route)
+                                       (14.4% logic, 85.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
@@ -578,20 +577,20 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    4.292|    3.134|    1.168|         |
+clk            |    4.283|    3.071|    4.140|         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 19.00 secs
-Total CPU time to Xst completion: 18.54 secs
+Total REAL time to Xst completion: 16.00 secs
+Total CPU time to Xst completion: 16.34 secs
  
 --> 
 
-Total memory usage is 4697788 kilobytes
+Total memory usage is 4703548 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    3 (   0 filtered)
-Number of infos    :    8 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
 

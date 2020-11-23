@@ -84,30 +84,6 @@ module cpuControlLogic(
 	reg S;  // State
 	reg NS; // Next State
 	 
-	// Control State Register
-	/*always@(posedge clk) begin
-		if(reset == 1) begin
-			firstInstruction = 1;
-			completedFirst = 0;
-			S = S_EXECUTE;
-		end else begin
-			S = NS;
-		end
-		if(completedFirst == 1) begin
-			firstInstruction = 0;
-		end
-	end */
-
-	/*always@(S, EOE, firstInstruction) begin
-		if(firstInstruction || EOE) begin
-			NS <= S_FETCH;
-			IL <= 0;
-		end else begin
-			NS <= ~S;
-			IL <= ~S;
-		end
-	end*/
-	
 	always@(posedge clk) begin
 		if(reset == 1) begin
 			S <= S_FETCH;
@@ -147,7 +123,6 @@ module cpuControlLogic(
 			end else if(opcode == LW) begin
 				resultSource <= SOURCE_RAM;
 			end else if(opcode == SW) begin
-				resultSource <= SOURCE_RAM;
 				RW <= 0;
 				if(S == S_EXECUTE) begin
 					MW <= 1;
@@ -158,50 +133,52 @@ module cpuControlLogic(
 			else if(opcode == BIZ) begin
 				if(S == S_EXECUTE) begin
 					PS <= PC_REL_JUMP;
+					BC <= BC_ZERO;
+				end else begin
+					PS <= PC_HOLD;
 				end
-				BC <= BC_ZERO;
 				RW <= 0;
 			end else if(opcode == BNZ) begin
 				if(S == S_EXECUTE) begin
 					PS <= PC_REL_JUMP;
+					BC <= BC_NZERO;
+				end else begin
+					PS <= PC_HOLD;
 				end
-				BC <= BC_NZERO;
 				RW <= 0;
 			end 
 			
 			// Jump
 			else if(opcode == JAL) begin
-				//if(S == S_FETCH) begin
-					if(S == S_EXECUTE) begin
-						PS <= PC_REL_JUMP;
-					end
-					resultSource <= SOURCE_PC;
-					//RW <= 1;
-				//end else begin
-					
-				//	PS <= PC_HOLD;
-				//end
+				if(S == S_EXECUTE) begin
+					PS <= PC_REL_JUMP;
+				end else begin
+					PS <= PC_HOLD;
+				end
+				resultSource <= SOURCE_PC;
+
 			end else if(opcode == JMP) begin
 				if(S == S_EXECUTE) begin
-						PS <= PC_REL_JUMP;
+					PS <= PC_REL_JUMP;
+				end else begin
+					PS <= PC_HOLD;
 				end
 				RW <= 0;
+			
 			end else begin //opcode JR or EOE
 				if(Rd == 0) begin
 					if(S == S_EXECUTE) begin
 						PS <= PC_ABS_JUMP;
+					end else begin
+						PS <= PC_HOLD;
 					end
-					RW <= 0;
-				//end else if(firstInstruction) begin //Reading the very first instruction
-					//NS <= S_FETCH;
-					//IL <= 1;
 				end else if(Rd == 4'hF) begin
 					PS <= PC_HOLD;
 					EOE <= 1;
 					RW <= 0;
 				end 
-			end	
+			end
 		end
 	end
-
+	
 endmodule

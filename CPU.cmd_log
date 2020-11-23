@@ -4,3 +4,4 @@ xst -intstyle ise -ifn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/Final
 xst -intstyle ise -ifn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/CPU.xst" -ofn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/CPU.syr" 
 xst -intstyle ise -ifn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/CPU.xst" -ofn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/CPU.syr" 
 xst -intstyle ise -ifn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/CPU.xst" -ofn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/CPU.syr" 
+xst -intstyle ise -ifn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/CPU.xst" -ofn "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/CPU.syr" 
