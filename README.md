@@ -12,16 +12,16 @@ Features of the processor can be summarized as follows;
 * One bit execution complete line
 
 ## Pin descriptions
-table here
+![Top-level pin descriptions](pins.PNG)
 
 ## Instruction set architecture
-table here
+![Instruction bit fields](isa.PNG)
 
-1) Arithmetic (Two’s Complement) ALU operation
+**Arithmetic (Two’s Complement) ALU operations**
 * ADD: Rd = Rs + Rt
 * SUB: Rd = Rs - Rt
 
-2) Logical ALU operation (6)
+**Logical ALU operation**
 * AND: Rd = Rs & Rt
 * OR: Rd = Rs | Rt
 * XOR: Rd = Rs ^ Rt
@@ -29,17 +29,42 @@ table here
 * SLA: Rd = Rs << 1
 * SRA: Rd = Rs >> 1
 
-3.Memory operations (3)
+**Memory operations**
 * LI: Rd = 8-bit Sign extended Immediate
 * LW: Rd = Mem[Rs[5:0]]
 * SW: Mem[ Rs[5:0] ] = Rt
 
-4.Conditional Branch operations (2)
+**Conditional Branch operations**
 * BIZ: PC = PC + 1 + Offset if Rs = 0
 * BNZ: PC = PC + 1 + Offset if Rs != 0
 
-5.Program Count Jump operations (3)
+**Program Count Jump operations**
 * JAL: Rd = PC + 1 and PC = PC + 1 + Offset
 * JMP: PC = PC + 1 + Offset
 * JR: PC = Rs
 * EOE: End of execution
+
+## Schematics
+The design of the CPU follows standard controller-dapath division.
+![Controller_and_Datapath](coda.png)
+
+The controller consists of three components: the control logic, program counter, and instruction register
+![Controller](cont.png)
+
+The datapath consists of two major components: the register file and the functional unit
+![Datapath](dpath.png)
+
+## Demo
+rom_instructions.coe contains a sample program written in hex to be fed to the processor. The program deliberately performs a variety of operations to test the correct operation of all CPU instructions. Upon completion, the program should perform  the following register transfers: (R7,R13,M15 <-- R3*R4; R14,M17 <-- R13-1)
+
+The following screenshot shows a looping section of the program showing: 
+* Blue: Left shift 
+* Indigo: Right shift 
+* Red: Branch if not zero 
+* Purple: Return
+![Sample execution showing left shift, right shift, branch if not zero, and return instrcutions](progr.png)
+
+
+And another couple screenshot of the final results:
+![Results of the sample program in the user registers](results.png)
+![Results of the sample program in memory](resultsmem.png)
