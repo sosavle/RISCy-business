@@ -62,6 +62,7 @@ The following screenshot shows a looping section of the program showing:
 * Indigo: Right shift 
 * Red: Branch if not zero 
 * Purple: Return
+
 ![Sample execution showing left shift, right shift, branch if not zero, and return instrcutions](progr.png)
 
 
