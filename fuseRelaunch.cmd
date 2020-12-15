@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -lib "secureip" -o "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/tb_CPU_isim_beh.exe" -prj "C:/Users/sosav/Downloads/ECE414_Project_Files_2020/FinalProject/tb_CPU_beh.prj" "work.tb_CPU" "work.glbl" 
