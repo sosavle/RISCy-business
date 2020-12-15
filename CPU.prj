@@ -1,8 +1,0 @@
-verilog work "registerFile.v"
-verilog work "programCounter.v"
-verilog work "instructionRegister.v"
-verilog work "functionalUnit.v"
-verilog work "cpuControlLogic.v"
-verilog work "cpuDatapath.v"
-verilog work "cpuController.v"
-verilog work "CPU.v"
